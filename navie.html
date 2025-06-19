@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Naive Bayes Classification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f8ff;
+      padding: 40px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    .output {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Naive Bayes Classifier</h1>
+  <p>Using Gaussian probabilities</p>
+
+  <input type="number" id="x1" placeholder="Enter x1" />
+  <br />
+  <button onclick="predict()">Predict</button>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    // Gaussian Naive Bayes function
+    function gaussian(x, mean, std) {
+      const exponent = Math.exp(-((x - mean) ** 2) / (2 * std ** 2));
+      return (1 / (Math.sqrt(2 * Math.PI) * std)) * exponent;
+    }
+
+    function predict() {
+      const x1 = parseFloat(document.getElementById("x1").value);
+      if (isNaN(x1)) {
+        document.getElementById("output").textContent = "Please enter a valid number.";
+        return;
+      }
+
+      // Simulated stats: mean and std for each class
+      const class0 = { mean: 2, std: 1, prior: 0.5 };
+      const class1 = { mean: 5, std: 1, prior: 0.5 };
+
+      const prob0 = gaussian(x1, class0.mean, class0.std) * class0.prior;
+      const prob1 = gaussian(x1, class1.mean, class1.std) * class1.prior;
+
+      const predictedClass = prob1 > prob0 ? 1 : 0;
+
+      document.getElementById("output").innerHTML = `
+        P(Class 0): ${prob0.toFixed(4)} <br />
+        P(Class 1): ${prob1.toFixed(4)} <br />
+        Predicted Class: <strong>${predictedClass}</strong>
+      `;
+    }
+  </script>
+
+</body>
+</html>

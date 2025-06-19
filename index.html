@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Personal Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      color: white;
+      padding: 30px 15px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      margin-bottom: 15px;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+    }
+
+    nav {
+      margin-top: 15px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .academic {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .academic:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .tooltip {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      color: #333;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+      min-width: 120px;
+    }
+
+    .nav-links li:hover .tooltip {
+      display: block;
+    }
+
+    .tooltip p {
+      margin: 5px 0;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.2s ease;
+    }
+
+    .tooltip p:hover {
+      color: #4e54c8;
+    }
+
+    .about-section {
+      max-width: 750px;
+      margin: 35px auto 20px;
+      background: white;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .about-section h2 {
+      margin-bottom: 12px;
+      color: #4e54c8;
+      font-size: 1.4rem;
+    }
+
+    .center-message {
+      margin: 30px auto;
+      font-size: 1rem;
+    }
+
+    .center-message h2 {
+      color: #4e54c8;
+      margin-bottom: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <img src="ps.jpg" alt="Profile Image" class="profile-img">
+    <h1>My Personal Website</h1>
+    <nav>
+      <ul class="nav-links">
+        <li>
+          <a href="#" class="academic">Academics</a>
+          <div class="tooltip">
+            <p onclick="redirectTo('10th')">10th</p>
+            <p onclick="redirectTo('Intermediate')">Intermediate</p>
+            <p onclick="redirectTo('B.Tech')">B.Tech</p>
+          </div>
+        </li>
+        <li><a href="achievements.html" class="academic">Achievements</a></li>
+        <li>
+  <a href="#" class="academic">Projects</a>
+  <div class="tooltip">
+    <p onclick="redirectTo('ML Projects')">ML Projects</p>
+  </div>
+</li>
+   </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="about-section">
+      <h2>About Me</h2>
+      <p>Hello! I'm Bala Sri Laksmi Sree. This website is a glimpse into my academic background, achievements, and the projects I've been a part of. Have a look around!</p>
+    </div>
+
+    <div class="center-message">
+      <h2>Welcome!</h2>
+      <p>Select a section from the menu to explore more about me.</p>
+    </div>
+  </main>
+
+  <script>
+    function redirectTo(level) {
+      if (level === '10th') {
+        window.location.href = '10th-certificate.html';
+      } else if (level === 'Intermediate') {
+        window.location.href = 'Intermediate-certificate.html';
+      } else if (level === 'B.Tech') {
+        window.location.href = 'btech-certificate.html';
+      }else if (level === 'ML Projects') {
+    window.location.href = 'mlprojects.html';
+  } 
+    }
+  </script>
+</body>
+</html>

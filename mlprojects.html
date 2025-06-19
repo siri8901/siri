@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ML Projects</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      text-align: center;
+      padding: 40px;
+    }
+    .experiment {
+      margin: 20px;
+      font-size: 1.2rem;
+      color: #4e54c8;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .experiment:hover {
+      color: #8f94fb;
+    }
+    a {
+      display: block;
+      margin-top: 30px;
+      color: blue;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>My Machine Learning Experiments</h1>
+
+  <div class="experiment" onclick="goToExperiment('decisiontree')">Decision Tree Classifier</div>
+  <div class="experiment" onclick="goToExperiment('randomforest')">Random Forest Classifier</div>
+  <div class="experiment" onclick="goToExperiment('logisticRegression')">Logistic Regression</div>
+  <div class="experiment" onclick="goToExperiment('svm')">SVM</div>
+  <div class="experiment" onclick="goToExperiment('knn')">KNN</div>
+  <div class="experiment" onclick="goToExperiment('kmeans')">K-Means</div>
+
+  <a href="index.html">← Back to Home</a>
+
+  <script>
+    function goToExperiment(name) {
+      if (name === 'decisiontree') {
+        window.location.href = 'decisiontree.html';
+      } else if (name === 'randomforest') {
+        window.location.href = 'randomforest.html';
+      } else if (name === 'logisticRegression') {
+        window.location.href = 'logisticregression.html';  // Make sure to create this page
+      } else if (name === 'svm') {
+        window.location.href = 'svm.html';  // Create this page as well
+      } else if (name === 'knn') {
+        window.location.href = 'knn.html';  // Same for this one
+      } else if (name === 'kmeans') {
+        window.location.href = 'kmeans.html';  // And this page too
+      }
+    }
+  </script>
+
+</body>
+</html>
