@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>K-Means Clustering</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f8ff;
+      padding: 40px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    .output {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>K-Means Clustering</h1>
+  <p>Classify a point into one of 2 clusters (k=2)</p>
+
+  <input type="number" id="x1" placeholder="Enter x1" />
+  <input type="number" id="x2" placeholder="Enter x2" />
+  <br />
+  <button onclick="predict()">Assign Cluster</button>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    // Predefined cluster centers
+    const clusterCenters = [
+      { x: 2, y: 2 },
+      { x: 7, y: 7 }
+    ];
+
+    function euclideanDistance(x1, y1, x2, y2) {
+      return Math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2);
+    }
+
+    function predict() {
+      const x1 = parseFloat(document.getElementById("x1").value);
+      const x2 = parseFloat(document.getElementById("x2").value);
+
+      if (isNaN(x1) || isNaN(x2)) {
+        document.getElementById("output").textContent = "Please enter valid numbers.";
+        return;
+      }
+
+      const distances = clusterCenters.map(center =>
+        euclideanDistance(x1, x2, center.x, center.y)
+      );
+
+      const assignedCluster = distances[0] < distances[1] ? 0 : 1;
+
+      document.getElementById("output").innerHTML = `
+        Distances: Cluster 0 = ${distances[0].toFixed(2)}, Cluster 1 = ${distances[1].toFixed(2)} <br />
+        Assigned to Cluster: <strong>${assignedCluster}</strong>
+      `;
+    }
+  </script>
+
+</body>
+</html>

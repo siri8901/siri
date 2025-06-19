@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SVM Classification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f8ff;
+      padding: 40px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    .output {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SVM Classification</h1>
+  <p>Model: decision = sign(1.5 * x1 + 2.0 * x2 - 4.0)</p>
+
+  <input type="number" id="x1" placeholder="Enter x1" />
+  <input type="number" id="x2" placeholder="Enter x2" />
+  <br />
+  <button onclick="predict()">Predict</button>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    function predict() {
+      const x1 = parseFloat(document.getElementById("x1").value);
+      const x2 = parseFloat(document.getElementById("x2").value);
+
+      if (isNaN(x1) || isNaN(x2)) {
+        document.getElementById("output").textContent = "Please enter valid numbers for x1 and x2.";
+        return;
+      }
+
+      const decision = 1.5 * x1 + 2.0 * x2 - 4.0;
+      const predictedClass = decision >= 0 ? 1 : 0;
+
+      document.getElementById("output").innerHTML = `
+        Decision Value: ${decision.toFixed(4)} <br />
+        Predicted Class: <strong>${predictedClass}</strong>
+      `;
+    }
+  </script>
+
+</body>
+</html>

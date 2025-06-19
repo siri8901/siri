@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logistic Regression</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f8ff;
+      padding: 40px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    .output {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Logistic Regression Prediction</h1>
+  <p>Model: sigmoid(0.8 * x1 + 1.2 * x2 - 1.5)</p>
+
+  <input type="number" id="x1" placeholder="Enter x1" />
+  <input type="number" id="x2" placeholder="Enter x2" />
+  <br />
+  <button onclick="predict()">Predict</button>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    function sigmoid(z) {
+      return 1 / (1 + Math.exp(-z));
+    }
+
+    function predict() {
+      const x1 = parseFloat(document.getElementById("x1").value);
+      const x2 = parseFloat(document.getElementById("x2").value);
+
+      if (isNaN(x1) || isNaN(x2)) {
+        document.getElementById("output").textContent = "Please enter valid numbers for x1 and x2.";
+        return;
+      }
+
+      const z = 0.8 * x1 + 1.2 * x2 - 1.5;
+      const probability = sigmoid(z);
+      const predictedClass = probability >= 0.5 ? 1 : 0;
+
+      document.getElementById("output").innerHTML = `
+        Probability: ${probability.toFixed(4)} <br />
+        Predicted Class: <strong>${predictedClass}</strong>
+      `;
+    }
+  </script>
+
+</body>
+</html>

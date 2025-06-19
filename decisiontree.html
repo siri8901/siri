@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Decision Tree Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #fff8f0;
+      padding: 40px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #4e54c8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .output {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Decision Tree Classifier</h1>
+  <p>Rule-based example: <br> if (x1 &lt; 5) and (x2 &gt; 3) → Class 1<br> else → Class 0</p>
+
+  <input type="number" id="x1" placeholder="Enter x1" />
+  <input type="number" id="x2" placeholder="Enter x2" />
+  <br />
+  <button onclick="predict()">Predict</button>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    function predict() {
+      const x1 = parseFloat(document.getElementById("x1").value);
+      const x2 = parseFloat(document.getElementById("x2").value);
+
+      if (isNaN(x1) || isNaN(x2)) {
+        document.getElementById("output").textContent = "Please enter valid numbers for x1 and x2.";
+        return;
+      }
+
+      // Decision tree logic
+      let prediction;
+      if (x1 < 5 && x2 > 3) {
+        prediction = 1;
+      } else {
+        prediction = 0;
+      }
+
+      // CORRECTED OUTPUT LINE
+      document.getElementById("output").innerHTML = `Predicted Class: <strong>${prediction}</strong>`;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Forest</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f0f8ff;
+      padding: 40px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    .output {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Random Forest Prediction</h1>
+  <p>Simulated with 3 decision trees</p>
+
+  <input type="number" id="x1" placeholder="Enter x1" />
+  <input type="number" id="x2" placeholder="Enter x2" />
+  <br />
+  <button onclick="predict()">Predict</button>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    // Simulate individual decision trees
+    function tree1(x1, x2) {
+      return x1 + x2 > 2 ? 1 : 0;
+    }
+
+    function tree2(x1, x2) {
+      return x1 > 1 ? 1 : 0;
+    }
+
+    function tree3(x1, x2) {
+      return x2 > 1.5 ? 1 : 0;
+    }
+
+    function predict() {
+      const x1 = parseFloat(document.getElementById("x1").value);
+      const x2 = parseFloat(document.getElementById("x2").value);
+
+      if (isNaN(x1) || isNaN(x2)) {
+        document.getElementById("output").textContent = "Please enter valid numbers for x1 and x2.";
+        return;
+      }
+
+      // Simulate predictions from 3 trees
+      const predictions = [tree1(x1, x2), tree2(x1, x2), tree3(x1, x2)];
+
+      const sum = predictions.reduce((a, b) => a + b, 0);
+      const predictedClass = sum >= 2 ? 1 : 0; // majority vote
+
+      document.getElementById("output").innerHTML = `
+        Votes: ${predictions.join(', ')} <br />
+        Predicted Class: <strong>${predictedClass}</strong>
+      `;
+    }
+  </script>
+
+</body>
+</html>
